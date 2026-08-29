@@ -1,18 +1,28 @@
-# Standard Library substitutions
+# STDLIB Usage Map
 
-This project intentionally avoids third-party runtime dependencies. Key
-standard-library modules used and why:
+This project uses Python standard library only.
 
-- argparse / input() - CLI interaction
-- tkinter + tkinter.filedialog - native file-selection dialog
-- pathlib / os - filesystem operations and Downloads discovery
-- collections.Counter - frequency counting
-- heapq - Huffman priority queue
-- struct - binary packing for the archive header
-- zlib - CRC32 integrity
-- time - timing/metrics
-- unittest - testing (not included in this minimal push)
-- tempfile - temporary files for tests
+## Core runtime
 
-The plan requires the requirements.txt file to be empty; the runtime
-relies only on Python's standard library.
+- `pathlib` - file paths and basename handling
+- `os` / `sys` - environment and path setup
+- `tkinter.filedialog` - native file picker dialogs
+- `json` - metadata encoding in `.zc`
+- `struct` - fixed-width archive header
+- `zlib` - CRC32 and zlib codec
+- `lzma` - LZMA codec
+- `collections.Counter` + `heapq` - Huffman implementation
+
+## Optional stdlib feature
+
+- `compression.zstd` - preferred ZSTD adapter when available (Python 3.14+)
+
+## Quality and tests
+
+- `unittest` - test framework
+- `tempfile` - temporary files in tests
+
+## Dependency policy
+
+- `requirements.txt` is intentionally empty
+- No third-party runtime dependencies are required
